@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://jayrideChallengeapi.azurewebsites.net",
+    "secure": false
+  }
+}

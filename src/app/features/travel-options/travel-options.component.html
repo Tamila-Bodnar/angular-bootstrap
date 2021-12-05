@@ -1,0 +1,40 @@
+<div class="mt-4 mb-4 pt-2 pb-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" sortable="name" class="text-center">Name</th>
+        <th scope="col" sortable="pricePerPassenger" class="text-center">Price Per Passenger &#8595;</th>
+        <th scope="col" sortable="vehicleTypeName" class="text-center">Vehicle Name</th>
+        <th scope="col" sortable="vehicleTypeMaxPassengers" class="text-center">Vehicle Max Passengers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let listing of listings; index as i">
+        <td class="text-center">{{ listing.name }}</td>
+        <td class="text-center">{{ listing.pricePerPassenger | number }}</td>
+        <td class="text-center">{{ listing.vehicleType.name }}</td>
+        <td class="text-center">{{ listing.vehicleType.maxPassengers | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<table class="table table-info table-bordered border-primary">
+  <thead class="">
+    <tr>
+      <th scope="col" sortable="listingsSize" class="text-center">Total number</th>
+      <th scope="col" sortable="min" class="text-center">Min Price</th>
+      <th scope="col" sortable="max" class="text-center">Max Price</th>
+      <th scope="col" sortable="average" class="text-center">Average Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">{{ listingsSize | number }}</td>
+      <td class="text-center">{{ min | number }}</td>
+      <td class="text-center">{{ max | number }}</td>
+      <td class="text-center">{{ average | number }}</td>
+    </tr>
+  </tbody>
+</table>

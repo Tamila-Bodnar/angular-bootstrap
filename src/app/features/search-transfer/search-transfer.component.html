@@ -1,0 +1,101 @@
+<div class="container border border-info border-2 rounded mt-4 mb-4">
+  <form [formGroup]="form" class="container">
+    <div class="row">
+      <div class="col-md-6 p-2 mb-2">
+        <label>Traveller name</label>
+        <input type="text" class="col form-control mt-1" formControlName="name">
+        <div *ngIf="!name.valid && name.touched" class="position-absolute text-danger">
+          Please enter the name.
+        </div>
+      </div>
+
+      <div class="col-md-6 p-2 mb-2">
+        <label>Traveller email</label>
+        <input type="email" class="form-control mt-1" formControlName="email">
+        <div *ngIf="!email.valid && email.touched" class="position-absolute text-danger">
+          Please enter the email.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 p-2 mb-2">
+        <label>Channel</label>
+        <select class="form-select mt-1" area-label="Default select example" formControlName="channel">
+          <option selected value="" class="text-muted">Please choose the option</option>
+          <option value="partner">Partner</option>
+          <option value="agent">Agent</option>
+          <option value="direct customer">Direct Customer</option>
+        </select>
+        <div *ngIf="!channel.valid && channel.touched" class="position-absolute text-danger">
+          Please choose the channel.
+        </div>
+      </div>
+
+      <div class="col-md-6 p-2 mb-2 row">
+        <div class="d-flex align-items-end">
+            <div class="form-check form-switch form-switch-lg">
+              <input class="form-check-input" type="checkbox" role="switch" formControlName="meetGreet">
+              <label class="form-check-label m-2" for="flexSwitchCheckChecked">Meet & Greet Service</label>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 p-2 mt-2 mb-4">
+      <div class="row border rounded bg-light">
+        <div class="col-md-6 p-2">
+          <label class="p-2">Date and Time From</label>
+          <input type="datetime-local" formControlName="dateTimeStart" max={{form.value.dateTimeEnd}} >
+          <div *ngIf="!dateTimeStart.valid && dateTimeStart.touched" class="position-absolute text-danger mt-1">
+            Please enter the start date and time.
+          </div>
+        </div>
+
+        <div class="col-md-6 p-2">
+          <label class="p-2">Date and Time To</label>
+          <input type="datetime-local" formControlName="dateTimeEnd" min={{form.value.dateTimeStart}}>
+          <div *ngIf="!dateTimeEnd.valid && dateTimeEnd.touched" class="position-absolute text-danger mt-1">
+            Please enter the finish date and time.
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="!form.valid && name.valid && email.valid && channel.valid &&
+            dateTimeStart.valid && dateTimeEnd.valid && price.valid"
+        class="text-danger mt-4 d-flex justify-content-center"
+      >
+        Please enter the right start anf finish date and time.
+      </div>
+    </div>
+
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label>Booking Price</label>
+        <div class="input-group mt-2">
+          <span class="input-group-text">$</span>
+          <input type="number" class="form-control" placeholder="0" formControlName="price" min="0" max="40000">
+        </div>
+        <div *ngIf="!price.valid && price.touched" class="position-absolute text-danger">
+          Please enter the price.
+        </div>
+      </div>
+
+      <div class="col-md-6 row">
+        <div class="d-flex justify-content-center align-items-end">
+          <div class="d-grid col-6 mx-auto mt-3">
+            <button
+              class="btn btn-primary btn-block text-uppercase w-4"
+              [disabled]="!form.valid"
+              (click)="save()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+.form-switch.form-switch-lg .form-check-input {
+  height: 2rem;
+  width: 3.75rem;
+  border-radius: 4rem;
+}
+
+input[type="datetime-local"] {
+  border-radius: 4px;
+  border-width: 2px;
+  border: solid 1px #0dcaf0;
+  padding: 6px;
+}
